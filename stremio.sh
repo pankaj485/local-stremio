@@ -55,4 +55,4 @@ echo "--> container stopped"
 
 echo "--> removing container"
 sudo docker container rm $container_name
-echo "--> $container_name continaer removed"
+echo "--> continaer removed"
