@@ -1,3 +1,8 @@
+- [**README**](#readme)
+- [prerequisites](#prerequisites)
+- [How to use it](#how-to-use-it)
+- [Known Bug](#known-bug)
+
 ## **README**
 
 Allows to use stremio on localhost using docker container.
@@ -8,11 +13,6 @@ If the container:
 1.  Is running: will stop the container, remove it and create a new container and run it.
 2.  Is not running but exists: will remove it and create a new container and run it.
 3.  Is not running and doesn't exist: will create a new container and run it.
-
-- [**README**](#readme)
-- [prerequisites](#prerequisites)
-- [How to use it](#how-to-use-it)
-- [Known Bug](#known-bug)
 
 ## prerequisites
 
