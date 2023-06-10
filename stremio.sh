@@ -6,9 +6,9 @@
 # TODO: implement the PORT from user input or use custom default value
 # TODO: keep the output running on the terminal
 # TODO: when user will stop the command, kill the cotainer and remove it
+# when the process terminates, stop and remove the container
 
-# defining the mapped port
-# PORT=6969
+# PORT=8848
 container_name="stremio-streaming-server"
 all_containers=$(sudo docker container ls -a --format "{{.Names}}")
 running_containers=$(sudo docker container ls --format "{{.Names}}")
@@ -32,30 +32,27 @@ if [[ $is_container_running ]]; then
   sudo docker container rm $container_name
 
   echo "--> Container removed. Recreating it"
-  sudo docker run -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
-
-  echo "--> New Container created"
+  sudo docker run -it -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
 
 elif [[ $is_container_existing ]]; then
   echo "--> container already exists. Removing it"
   sudo docker container rm $container_name
 
   echo "--> Container removed. Recreating it"
-  sudo docker run -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
-
-  echo "--> New Container created"
+  sudo docker run -it -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
 
 else
   echo "--> creating a new container"
-  sudo docker run -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
+  sudo docker run -it -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
 
-  echo "--> New Container created on PORT 11470"
 fi
 
-# create and execute container, map the port to desired port
-# sudo docker run -p 11470:11470 -v ${PWD}:/root/.stremio-server --name=stremio-streaming-server sleeyax/stremio-streaming-server
+# when the process terminates, stop and remove the container
 
-# Keep the program active by adding an infinite loop
-while true; do
-  sleep 1
-done
+echo "--> stopping container"
+sudo docker container stop $container_name
+echo "--> container stopped"
+
+echo "--> removing container"
+sudo docker container rm $container_name
+echo "--> $container_name continaer removed"
