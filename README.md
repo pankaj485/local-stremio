@@ -1,7 +1,7 @@
 - [**README**](#readme)
 - [prerequisites](#prerequisites)
 - [How to use it](#how-to-use-it)
-- [Known Bug](#known-bug)
+- [Improvement ideas](#improvement-ideas)
 
 ## **README**
 
@@ -27,6 +27,6 @@ If the container:
 - execute the file with `./stremio.sh`
 - access the local sever on [localhost:11470](http://127.0.0.1:11470)
 
-## Known Bug
+## Improvement ideas
 
-- Although the program will check all the conditions and run the container, The script will not terminate by running `ctrl + c`. I'm yet to resolve it. Meanwhile it can be closed by clicking on close icon from terminal GUI.
+- to run the container on the desired port
